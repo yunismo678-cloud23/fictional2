@@ -1,44 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Ad | FreeAds</title>
-  <meta name="description" content="تفاصيل الإعلان في FreeAds.">
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل الإعلان</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .card img { width: 100%; height: 350px; object-fit: cover; }
+    .content { padding: 20px; }
+    h2 { margin: 0; color: #007bff; }
+    p { color: #555; }
+    a { display: inline-block; background: #007bff; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; margin-top: 10px; }
+  </style>
 </head>
 <body>
-  <div class="container single">
-    <div class="nav">
-      <a class="btn" href="index.html" data-i18n="back">رجوع إلى الرئيسية</a>
-      <div class="controls">
-        <select class="lang" onchange="setLang(this.value)">
-          <option value="ar">العربية</option>
-          <option value="en">English</option>
-        </select>
-        <a class="btn primary" href="post.html"><span data-i18n="post">أضف إعلان</span></a>
-      </div>
+
+  <div class="card">
+    <img id="adImage" src="" alt="إعلان">
+    <div class="content">
+      <h2 id="adTitle"></h2>
+      <p id="adDesc"></p>
+      <a href="index.html">الرجوع للقائمة</a>
     </div>
-
-    <div class="hero">
-      <div class="ad-head">
-        <h1 id="adTitle">عنوان الإعلان</h1>
-        <span class="badge" id="adCity">القاهرة</span>
-      </div>
-      <img id="adImg" alt="Ad Image" style="width:100%;max-height:480px;object-fit:cover;border-radius:16px;border:1px solid #223156"/>
-      <div class="ad-head">
-        <div class="price" id="adPrice">0 EGP</div>
-        <div><span class="small">☎ </span><span id="adPhone"></span></div>
-      </div>
-      <div style="margin-top:6px" id="adDesc"></div>
-    </div>
-
-    <h3 data-i18n="similar">إعلانات مشابهة</h3>
-    <div id="similar" class="grid"></div>
-
-    <div class="footer">© <span id="year"></span> FreeAds — v1.0</div>
   </div>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="assets/app.js"></script>
+
+  <script>
+    const ads = {
+      1: { title: "شقة للبيع في القاهرة", desc: "شقة 120م - 3 غرف - بالقرب من المترو.", img: "https://source.unsplash.com/600x400/?apartment" },
+      2: { title: "تويوتا كورولا 2020", desc: "عداد 40 ألف كم - اوتوماتيك - بحالة ممتازة.", img: "https://source.unsplash.com/600x400/?car,toyota" },
+      3: { title: "وظيفة موظف مبيعات", desc: "مطلوب موظف مبيعات خبرة سنتين في مجال العقارات.", img: "https://source.unsplash.com/600x400/?office,job" }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    if (ads[id]) {
+      document.getElementById("adTitle").innerText = ads[id].title;
+      document.getElementById("adDesc").innerText = ads[id].desc;
+      document.getElementById("adImage").src = ads[id].img;
+    }
+  </script>
+
 </body>
 </html>
+
