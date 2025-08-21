@@ -25,7 +25,19 @@
   <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-YOUR-ADSENSE-PUBLISHER-ID" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
   <link rel="stylesheet" href="assets/style.css">
-</head>
+</head><script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-box input');
+    searchInput.addEventListener('input', function() {
+      const term = this.value.trim().toLowerCase();
+      document.querySelectorAll('.card').forEach(card => {
+        const text = (card.textContent || '').toLowerCase();
+        card.style.display = text.includes(term) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
 <body>
   <div class="container">
     <div class="nav">
