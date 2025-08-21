@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ad | FreeAds</title>
+  <meta name="description" content="تفاصيل الإعلان في FreeAds.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="container single">
+    <div class="nav">
+      <a class="btn" href="index.html" data-i18n="back">رجوع إلى الرئيسية</a>
+      <div class="controls">
+        <select class="lang" onchange="setLang(this.value)">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+        </select>
+        <a class="btn primary" href="post.html"><span data-i18n="post">أضف إعلان</span></a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="ad-head">
+        <h1 id="adTitle">عنوان الإعلان</h1>
+        <span class="badge" id="adCity">القاهرة</span>
+      </div>
+      <img id="adImg" alt="Ad Image" style="width:100%;max-height:480px;object-fit:cover;border-radius:16px;border:1px solid #223156"/>
+      <div class="ad-head">
+        <div class="price" id="adPrice">0 EGP</div>
+        <div><span class="small">☎ </span><span id="adPhone"></span></div>
+      </div>
+      <div style="margin-top:6px" id="adDesc"></div>
+    </div>
+
+    <h3 data-i18n="similar">إعلانات مشابهة</h3>
+    <div id="similar" class="grid"></div>
+
+    <div class="footer">© <span id="year"></span> FreeAds — v1.0</div>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

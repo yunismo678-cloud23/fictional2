@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title data-i18n="createAd">إنشاء إعلان</title>
+  <meta name="description" content="أضف إعلانك مجانًا — صورة واحدة فقط لكل إعلان.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <a class="btn" href="index.html" data-i18n="back">رجوع إلى الرئيسية</a>
+      <div class="controls">
+        <select class="lang" onchange="setLang(this.value)">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+
+    <form id="adForm" class="form" autocomplete="on">
+      <div class="notice" data-i18n="singleImageNote">يسمح بصورة واحدة للإعلان (مثل OLX).</div>
+      <div class="row">
+        <div>
+          <label data-i18n="title">العنوان</label>
+          <input name="title" required placeholder="مثال: موبايل مستعمل بحالة ممتازة"/>
+        </div>
+        <div>
+          <label data-i18n="category">الفئة</label>
+          <select name="category" required>
+            <option value="" data-i18n="chooseCat">اختر فئة</option>
+            <option>Electronics</option>
+            <option>Vehicles</option>
+            <option>Real Estate</option>
+            <option>Jobs</option>
+            <option>Services</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label data-i18n="price">السعر</label>
+          <input name="price" type="number" min="0" step="1" placeholder="0"/>
+        </div>
+        <div>
+          <label data-i18n="city">المدينة</label>
+          <input name="city" placeholder="القاهرة"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label data-i18n="phone">رقم الهاتف</label>
+          <input name="phone" placeholder="010..." />
+        </div>
+        <div>
+          <label data-i18n="image">الصورة (واحدة فقط)</label>
+          <input id="image" name="image" type="file" accept="image/*" />
+        </div>
+      </div>
+
+      <div>
+        <label data-i18n="desc">الوصف</label>
+        <textarea name="desc" placeholder="تفاصيل الإعلان..."></textarea>
+      </div>
+
+      <button class="btn primary" type="submit" data-i18n="submit">نشر</button>
+    </form>
+
+    <div class="footer">© <span id="year"></span> FreeAds — v1.0</div>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>FreeAds</title>
+  <meta name="description" content="بوابة إعلانات مبوبة مجانية (بصورة واحدة لكل إعلان) — سريعة وخفيفة، جاهزة للأرشفة على جوجل.">
+  <link rel="canonical" href="https://example.com/">
+  <meta property="og:title" content="FreeAds | سوق مجاني">
+  <meta property="og:description" content="منصة إعلانات مبوبة مجانية — صورة واحدة لكل إعلان.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og.png">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="assets/favicon.png">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"FreeAds",
+    "url":"https://example.com/",
+    "potentialAction":{"@type":"SearchAction","target":"https://example.com/?q={search_term_string}","query-input":"required name=search_term_string"}
+  }
+  </script>
+  <!-- AdSense: replace YOUR-ADSENSE-PUBLISHER-ID then place ad units where needed -->
+  <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-YOUR-ADSENSE-PUBLISHER-ID" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="brand"><div class="logo"></div><div>
+        <div style="font-size:18px" data-i18n="brand">سوق مجاني</div>
+        <div class="small" data-i18n="subtitle">منصة إعلانات مبوبة مجانية — صورة واحدة لكل إعلان.</div>
+      </div></div>
+      <div class="controls">
+        <select class="lang" onchange="setLang(this.value)">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+        </select>
+        <a class="btn primary" href="post.html"><span data-i18n="post">أضف إعلان</span></a>
+      </div>
+    </div>
+
+    <div class="searchbar">
+      <input id="search" placeholder="ابحث عن..." aria-label="search" />
+      <select id="cat">
+        <option value="" data-i18n="all">الكل</option>
+        <option value="Electronics" data-i18n="electronics">إلكترونيات</option>
+        <option value="Vehicles" data-i18n="vehicles">مركبات</option>
+        <option value="Real Estate" data-i18n="realestate">عقارات</option>
+        <option value="Jobs" data-i18n="jobs">وظائف</option>
+        <option value="Services" data-i18n="services">خدمات</option>
+        <option value="Other" data-i18n="other">أخرى</option>
+      </select>
+    </div>
+
+    <div id="grid" class="grid" aria-live="polite"></div>
+
+    <div class="footer">© <span id="year"></span> FreeAds — v1.0</div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Category filter (client-side)
+    const catSelect = document.getElementById('cat');
+    if(catSelect){
+      catSelect.addEventListener('change', ()=>{
+        const val = catSelect.value.toLowerCase();
+        const q = document.getElementById('search').value.toLowerCase();
+        // simple filter uses search box; category applied inside renderAds via search
+        const merged = [q, val==='': '' : val].filter(Boolean).join(' ');
+        renderAds(merged);
+      });
+    }
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
